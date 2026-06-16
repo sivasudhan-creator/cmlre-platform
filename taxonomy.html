@@ -1,73 +1,150 @@
-<div class="card">
-    <h3>Species Verification Directory</h3>
-    <p>Comprehensive biological cataloging of specimens tracked across India's Exclusive Economic Zone (EEZ).</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Scientific Name</th>
-                <th>Common Name</th>
-                <th>Family Group</th>
-                <th>Primary Catch Zone</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><i>Rastrelliger kanagurta</i></td>
-                <td>Indian Mackerel</td>
-                <td>Scombridae</td>
-                <td>West Coast EEZ</td>
-                <td><span style="color: #2a9d8f; font-weight: 600;">Abundant</span></td>
-            </tr>
-            <tr>
-                <td><i>Sardinella longiceps</i></td>
-                <td>Indian Oil Sardine</td>
-                <td>Clupeidae</td>
-                <td>South-East Coast</td>
-                <td><span style="color: #2a9d8f; font-weight: 600;">Abundant</span></td>
-            </tr>
-            <tr>
-                <td><i>Katsuwonus pelamis</i></td>
-                <td>Skipjack Tuna</td>
-                <td>Scombridae</td>
-                <td>Lakshadweep Sea</td>
-                <td><span style="color: #e9c46a; font-weight: 600;">Monitored</span></td>
-            </tr>
-            <tr>
-                <td><i>Lutjanus johnii</i></td>
-                <td>John's Snapper</td>
-                <td>Lutjanidae</td>
-                <td>Andaman Sea</td>
-                <td><span style="color: #2a9d8f; font-weight: 600;">Stable</span></td>
-            </tr>
-            <tr>
-                <td><i>Carcharhinus limbatus</i></td>
-                <td>Blacktip Shark</td>
-                <td>Carcharhinidae</td>
-                <td>Bay of Bengal</td>
-                <td><span style="color: #e76f51; font-weight: 600;">Protected</span></td>
-            </tr>
-            <tr>
-                <td><i>Pampus argenteus</i></td>
-                <td>Silver Pomfret</td>
-                <td>Stromateidae</td>
-                <td>North-West Coast</td>
-                <td><span style="color: #e9c46a; font-weight: 600;">Overexploited</span></td>
-            </tr>
-            <tr>
-                <td><i>Epinephelus malabaricus</i></td>
-                <td>Malabar Grouper</td>
-                <td>Serranidae</td>
-                <td>Gulf of Mannar</td>
-                <td><span style="color: #2a9d8f; font-weight: 600;">Stable</span></td>
-            </tr>
-            <tr>
-                <td><i>Nemipterus japonicus</i></td>
-                <td>Japanese Threadfin Bream</td>
-                <td>Nemipteridae</td>
-                <td>South-West Coast</td>
-                <td><span style="color: #2a9d8f; font-weight: 600;">Abundant</span></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxonomy - CMLRE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Embedded fallback styles to guarantee perfect table formatting */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid #eef2f3;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #03045e;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            background-color: #ffffff;
+            border-bottom: 1px solid #eef2f3;
+            font-size: 0.95rem;
+            color: #1d2d44;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #f8fafd;
+        }
+
+        .status-badge {
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🌊 CMLRE Platform</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="oceanography.html">Oceanography</a></li>
+            <li><a href="taxonomy.html" class="active">Taxonomy</a></li>
+            <li><a href="edna.html">eDNA</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2 style="margin-top: 2rem; font-size: 1.8rem; color: #03045e;">🐟 Taxonomic Records Directory</h2>
+        <p style="color: #6c757d; margin-bottom: 2rem;">Comprehensive biological cataloging of specimens tracked across India's Exclusive Economic Zone (EEZ).</p>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scientific Name</th>
+                        <th>Common Name</th>
+                        <th>Family Group</th>
+                        <th>Primary Catch Zone</th>
+                        <th>Conservation Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>Rastrelliger kanagurta</i></td>
+                        <td>Indian Mackerel</td>
+                        <td>Scombridae</td>
+                        <td>West Coast EEZ</td>
+                        <td><span class="status-badge" style="color: #2a9d8f; background: #e8f5e9;">Abundant</span></td>
+                    </tr>
+                    <tr>
+                        <td><i>Sardinella longiceps</i></td>
+                        <td>Indian Oil Sardine</td>
+                        <td>Clupeidae</td>
+                        <td>South-East Coast</td>
+                        <td><span class="status-badge" style="color: #2a9d8f; background: #e8f5e9;">Abundant</span></td>
+                    </tr>
+                    <tr>
+                        <td><i>Katsuwonus pelamis</i></td>
+                        <td>Skipjack Tuna</td>
+                        <td>Scombridae</td>
+                        <td>Lakshadweep Sea</td>
+                        <td><span class="status-badge" style="color: #e9c46a; background: #fffde7;">Monitored</span></td>
+                    </tr>
+                    <tr>
+                        <td><i>Lutjanus johnii</i></td>
+                        <td>John's Snapper</td>
+                        <td>Lutjanidae</td>
+                        <td>Andaman Sea</td>
+                        <td><span class="status-badge" style="color: #0077b6; background: #e1f5fe;">Stable</span></td>
+                    </tr>
+                    <tr>
+                        <td><i>Carcharhinus limbatus</i></td>
+                        <td>Blacktip Shark</td>
+                        <td>Carcharhinidae</td>
+                        <td>Bay of Bengal</td>
+                        <td><span class="status-badge" style="color: #e76f51; background: #fbe9e7;">Protected</span></td>
+                    </tr>
+                    <tr>
+                        <td><i>Pampus argenteus</i></td>
+                        <td>Silver Pomfret</td>
+                        <td>Stromateidae</td>
+                        <td>North-West Coast</td>
+                        <td><span class="status-badge" style="color: #d62828; background: #ffebee;">Overexploited</span></td>
+                    </tr>
+                    <tr>
+                        <td><i>Epinephelus malabaricus</i></td>
+                        <td>Malabar Grouper</td>
+                        <td>Serranidae</td>
+                        <td>Gulf of Mannar</td>
+                        <td><span class="status-badge" style="color: #0077b6; background: #e1f5fe;">Stable</span></td>
+                    </tr>
+                    <tr>
+                        <td><i>Nemipterus japonicus</i></td>
+                        <td>Japanese Threadfin Bream</td>
+                        <td>Nemipteridae</td>
+                        <td>South-West Coast</td>
+                        <td><span class="status-badge" style="color: #2a9d8f; background: #e8f5e9;">Abundant</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <a href="index.html" style="text-decoration: none; color: #0077b6; font-weight: bold; display: inline-block; margin-top: 1rem;">&larr; Back to Home Dashboard</a>
+    </div>
+
+</body>
+</html>
