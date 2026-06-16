@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eDNA Data - CMLRE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        textarea, input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🌊 CMLRE Platform</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="oceanography.html">Oceanography</a></li>
+            <li><a href="taxonomy.html">Taxonomy</a></li>
+            <li><a href="edna.html" class="active">eDNA</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>🧬 Molecular Biology & eDNA Processing Engine</h2>
+        <p>Simulate high-volume batch input sequencing matches for taxonomic biodiversity tracking.</p>
+
+        <div class="card">
+            <h3>Analyze Query eDNA Sequence</h3>
+            <label for="sequence">Paste FASTA sequence sequence below:</label>
+            <textarea id="sequence" rows="4">ATCGGTAAAGCCTAGCTAGCTAGCT</textarea>
+            <button class="btn" onclick="runMatch()">Execute Alignment Run</button>
+            
+            <p id="result-box" style="margin-top: 15px; font-weight: bold; color: green; display: none;">
+                ✅ Sequence Match Log Verified: 98.7% match alignment profile mapped to 'Sardinella longiceps'.
+            </p>
+        </div>
+
+        <div class="card" style="margin-top: 2rem;">
+            <h3>📤 Automated Data Ingestion Pipeline</h3>
+            <label>Upload Ocean Cruise Datasets (CSV / FASTQ format):</label>
+            <input type="file" onchange="alert('Dataset accepted into processing system pipeline queue using Darwin Core metadata rules.')">
+        </div>
+        <br>
+        <a href="index.html" style="text-decoration: none; color: var(--secondary-color); font-weight: bold;">&larr; Back to Home Dashboard</a>
+    </div>
+
+    <script>
+        function runMatch() {
+            document.getElementById('result-box').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
