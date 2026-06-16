@@ -5,47 +5,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMLRE Unified Data Platform</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Extra structural animations and layouts */
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(42, 157, 143, 0.2);
+            color: #2a9d8f;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #2a9d8f;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(42, 157, 143, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(42, 157, 143, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(42, 157, 143, 0); }
+        }
+        .metrics-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: -1.5rem;
+            margin-bottom: 3rem;
+        }
+        .metric-mini-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 4px solid #0077b6;
+        }
+        .metric-mini-card i {
+            font-size: 1.8rem;
+            color: #00b4d8;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #03045e;
+        }
+        .metric-label {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">🌊 CMLRE Platform</div>
+        <div class="logo"><i class="fa-solid fa-shuttle-space"></i> CMLRE Platform</div>
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="oceanography.html">Oceanography</a></li>
-            <li><a href="taxonomy.html">Taxonomy</a></li>
-            <li><a href="edna.html">eDNA</a></li>
+            <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="oceanography.html"><i class="fa-solid fa-chart-line"></i> Oceanography</a></li>
+            <li><a href="taxonomy.html"><i class="fa-solid fa-fish"></i> Taxonomy</a></li>
+            <li><a href="edna.html"><i class="fa-solid fa-dna"></i> eDNA</a></li>
         </ul>
     </nav>
 
     <div class="container">
         <div class="hero">
-            <h1>AI-Driven Unified Data Platform</h1>
-            <p>Center for Marine Living Resources and Ecology (CMLRE), Kochi</p>
+            <div class="live-indicator">
+                <div class="pulse-dot"></div> AI Core Status: Operational
+            </div>
+            <h1>AI-Driven Unified Marine Data Platform</h1>
+            <p>Center for Marine Living Resources and Ecology (CMLRE), Ministry of Earth Sciences</p>
+        </div>
+
+        <div class="metrics-bar">
+            <div class="metric-mini-card" style="border-left-color: #03045e;">
+                <div>
+                    <div class="metric-value">4,812</div>
+                    <div class="metric-label">Monitored Grid Points</div>
+                </div>
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="metric-mini-card" style="border-left-color: #0077b6;">
+                <div>
+                    <div class="metric-value">142+</div>
+                    <div class="metric-label">Cataloged Families</div>
+                </div>
+                <i class="fa-solid fa-folder-tree"></i>
+            </div>
+            <div class="metric-mini-card" style="border-left-color: #00b4d8;">
+                <div>
+                    <div class="metric-value">98.7%</div>
+                    <div class="metric-label">eDNA Alignment Confidence</div>
+                </div>
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="metric-mini-card" style="border-left-color: #2a9d8f;">
+                <div>
+                    <div class="metric-value">3.2 TB</div>
+                    <div class="metric-label">Unified Ingested Data</div>
+                </div>
+                <i class="fa-solid fa-database"></i>
+            </div>
         </div>
 
         <section>
-            <h2>Platform Overview</h2>
-            <p>This system integrates heterogeneous, high-volume datasets from oceanography, taxonomy, morphology, and molecular biology into a single unified system to enable data-driven decisions for marine conservation and fisheries management.</p>
+            <h2><i class="fa-solid fa-network-wired"></i> Cross-Disciplinary Architecture Hub</h2>
+            <p style="color: #6c757d; margin-top: 0.5rem;">Select an independent computational analytical node below to explore integrated data tracking vectors.</p>
         </section>
 
         <div class="grid">
             <div class="card">
-                <h3>📊 Oceanography & Trends</h3>
-                <p>Analyze physical, chemical, and biological parameters to study how ocean changes influence ecosystem health.</p>
-                <a href="oceanography.html" class="btn">Explore Module &rarr;</a>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: #e1f5fe; color: #023e8a; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700;">NODE 01</span>
+                        <i class="fa-solid fa-chart-area" style="font-size: 1.4rem; color: #023e8a;"></i>
+                    </div>
+                    <h3>Oceanography & Environmental Trends</h3>
+                    <p>Analyze physical, chemical, and biological marine parameters alongside unified cross-correlation data sets map layouts.</p>
+                </div>
+                <a href="oceanography.html" class="btn">Launch Sub-System &rarr;</a>
             </div>
 
             <div class="card">
-                <h3>🐟 Taxonomy & Otolith</h3>
-                <p>Standardized biological taxonomy data collections paired with structural morphometrics visualization profiles.</p>
-                <a href="taxonomy.html" class="btn">Explore Module &rarr;</a>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: #e8f5e9; color: #2a9d8f; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700;">NODE 02</span>
+                        <i class="fa-solid fa-dna" style="font-size: 1.4rem; color: #2a9d8f;"></i>
+                    </div>
+                    <h3>Taxonomy & Otolith Morphology</h3>
+                    <p>Standardized biological taxonomy data collections paired with structural morphometrics visualization profiles.</p>
+                </div>
+                <a href="taxonomy.html" class="btn" style="background-color: #2a9d8f;">Launch Sub-System &rarr;</a>
             </div>
 
             <div class="card">
-                <h3>🧬 Molecular & eDNA</h3>
-                <p>Manage environmental DNA (eDNA) sample extractions, taxonomic match logs, and automated data entry pipelines.</p>
-                <a href="edna.html" class="btn">Explore Module &rarr;</a>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: #fff3e0; color: #e65100; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700;">NODE 03</span>
+                        <i class="fa-solid fa-microscope" style="font-size: 1.4rem; color: #e65100;"></i>
+                    </div>
+                    <h3>Molecular Biology & eDNA Tracking</h3>
+                    <p>Manage environmental DNA (eDNA) sample extractions, taxonomic match logs, and automated data entry pipelines.</p>
+                </div>
+                <a href="edna.html" class="btn" style="background-color: #e65100;">Launch Sub-System &rarr;</a>
             </div>
         </div>
     </div>

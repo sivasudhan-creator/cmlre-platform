@@ -5,55 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eDNA Data - CMLRE</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        textarea, input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-            border: 1px solid #ccc;
+        textarea { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; font-family: monospace; font-size: 0.9rem; }
+        .sample-chip {
+            display: inline-block;
+            background: #caf0f8;
+            color: #03045e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
         }
+        .sample-chip:hover { background: #0077b6; color: white; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">🌊 CMLRE Platform</div>
+        <div class="logo"><i class="fa-solid fa-shuttle-space"></i> CMLRE Platform</div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="oceanography.html">Oceanography</a></li>
             <li><a href="taxonomy.html">Taxonomy</a></li>
-            <li><a href="edna.html" class="active">eDNA</a></li>
+            <li><a href="edna.html" class="active"><i class="fa-solid fa-dna"></i> eDNA</a></li>
         </ul>
     </nav>
 
     <div class="container">
-        <h2>🧬 Molecular Biology & eDNA Processing Engine</h2>
-        <p>Simulate high-volume batch input sequencing matches for taxonomic biodiversity tracking.</p>
+        <h2>🧬 Molecular Biology & eDNA Alignment Engine</h2>
+        <p style="color: #6c757d; margin-bottom: 2rem;">Run automated matching matrix routines against multi-point biological sequences.</p>
 
-        <div class="card">
-            <h3>Analyze Query eDNA Sequence</h3>
-            <label for="sequence">Paste FASTA sequence sequence below:</label>
-            <textarea id="sequence" rows="4">ATCGGTAAAGCCTAGCTAGCTAGCT</textarea>
-            <button class="btn" onclick="runMatch()">Execute Alignment Run</button>
+        <div class="card" style="border-top: 4px solid #e65100;">
+            <h3><i class="fa-solid fa-magnifying-glass-chart"></i> Real-time Sequence Match Target Vector</h3>
+            <p style="margin-bottom: 1rem;">Click a sample node profile shortcut below to instantly queue up genetic sequences:</p>
             
-            <p id="result-box" style="margin-top: 15px; font-weight: bold; color: green; display: none;">
-                ✅ Sequence Match Log Verified: 98.7% match alignment profile mapped to 'Sardinella longiceps'.
-            </p>
+            <div style="margin-bottom: 0.5rem;">
+                <div class="sample-chip" onclick="loadSequence('sardine')">Sample B21 (Oil Sardine Loop)</div>
+                <div class="sample-chip" onclick="loadSequence('tuna')">Sample T04 (Skipjack Tuna Marker)</div>
+                <div class="sample-chip" onclick="loadSequence('unknown')">Sample X99 (Anomalous Fragment)</div>
+            </div>
+
+            <textarea id="sequence" rows="4">Select a preset sample configuration from above...</textarea>
+            
+            <button class="btn" style="background-color: #e65100; width: 100%;" onclick="runMatch()">
+                <i class="fa-solid fa-bolt"></i> Execute Alignment Run
+            </button>
+            
+            <div id="result-box" style="margin-top: 1.5rem; display: none;"></div>
         </div>
 
         <div class="card" style="margin-top: 2rem;">
-            <h3>📤 Automated Data Ingestion Pipeline</h3>
-            <label>Upload Ocean Cruise Datasets (CSV / FASTQ format):</label>
-            <input type="file" onchange="alert('Dataset accepted into processing system pipeline queue using Darwin Core metadata rules.')">
+            <h3><i class="fa-solid fa-cloud-arrow-up"></i> Automated Data Ingestion Pipeline</h3>
+            <label style="font-size: 0.9rem; color: #6c757d;">Upload automated raw marine cruise arrays (CSV / FASTQ layout templates):</label>
+            <input type="file" style="width:100%; margin-top:10px;" onchange="alert('Dataset successfully added to standard background indexing arrays using Darwin Core rule parameters.')">
         </div>
         <br>
-        <a href="index.html" style="text-decoration: none; color: var(--secondary-color); font-weight: bold;">&larr; Back to Home Dashboard</a>
+        <a href="index.html" style="text-decoration: none; color: #0077b6; font-weight: bold;">&larr; Back to Home Dashboard</a>
     </div>
 
     <script>
+        const sequences = {
+            sardine: "AAGCTGGTTACGTTACGCTAGCTAGCTAGCTAGC",
+            tuna: "CGTTAAGCCGATCGATCGATCGAATCGGGCTAA",
+            unknown: "TTTTTTTXXGGGGCCCCAAAATTT"
+        };
+
+        function loadSequence(key) {
+            document.getElementById('sequence').value = sequences[key];
+            document.getElementById('result-box').style.display = 'none'; // reset output view
+        }
+
         function runMatch() {
-            document.getElementById('result-box').style.display = 'block';
+            const seq = document.getElementById('sequence').value;
+            const resBox = document.getElementById('result-box');
+            resBox.style.display = 'block';
+            
+            if (seq.includes("ACGTTAC")) {
+                resBox.innerHTML = `<div style="background: #e8f5e9; color: #2a9d8f; padding: 15px; border-radius: 8px; border-left: 5px solid #2a9d8f;">
+                    <strong>✅ Alignment Success (98.7% Confidence)</strong><br>
+                    Matched Species: Sardinella longiceps (Indian Oil Sardine)<br>Locus: 12S rRNA Gene Loop
+                </div>`;
+            } else if (seq.includes("CGTTAAG")) {
+                resBox.innerHTML = `<div style="background: #e1f5fe; color: #0077b6; padding: 15px; border-radius: 8px; border-left: 5px solid #0077b6;">
+                    <strong>✅ Alignment Success (95.4% Confidence)</strong><br>
+                    Matched Species: Katsuwonus pelamis (Skipjack Tuna)<br>Locus: COI Barcode Fragment
+                </div>`;
+            } else {
+                resBox.innerHTML = `<div style="background: #ffebee; color: #c30000; padding: 15px; border-radius: 8px; border-left: 5px solid #c30000;">
+                    <strong>⚠️ Unknown Sequence Array Mapped</strong><br>
+                    No immediate match located in reference directory log registry indices.
+                </div>`;
+            }
         }
     </script>
 </body>

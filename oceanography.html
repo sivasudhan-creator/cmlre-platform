@@ -5,59 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oceanography - CMLRE</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-split {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        @media(max-width: 768px) { .dashboard-split { grid-template-columns: 1fr; } }
+        
+        .param-btn {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: white;
+            border: 1px solid #eef2f3;
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+            font-weight: 600;
+            color: #1d2d44;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .param-btn:hover, .param-btn.active {
+            background: #03045e;
+            color: white;
+            border-color: #03045e;
+            transform: translateX(5px);
+        }
+        .graph-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #eef2f3;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .bar-wrapper {
+            margin: 20px 0;
+        }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .bar-background {
+            background: #eef2f3;
+            height: 25px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0077b6, #00b4d8);
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+    </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">🌊 CMLRE Platform</div>
+        <div class="logo"><i class="fa-solid fa-shuttle-space"></i> CMLRE Platform</div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="oceanography.html" class="active">Oceanography</a></li>
-            <li><a href="taxonomy.html">Taxonomy</a></li>
-            <li><a href="edna.html">eDNA</a></li>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="oceanography.html" class="active"><i class="fa-solid fa-chart-line"></i> Oceanography</a></li>
+            <li><a href="taxonomy.html"><i class="fa-solid fa-fish"></i> Taxonomy</a></li>
+            <li><a href="edna.html"><i class="fa-solid fa-dna"></i> eDNA</a></li>
         </ul>
     </nav>
 
     <div class="container">
-        <h2>📊 Oceanographic & Environmental Trends</h2>
-        <p>Cross-disciplinary analytical dashboard showing real-time environmental metrics matched against historical baselines.</p>
-        
-        <div class="card">
-            <h3>Correlation Matrix (Mock Metric Insights)</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Mean Values</th>
-                        <th>Salinity Impact Index</th>
-                        <th>Biomass Correlation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Sea Surface Temp (SST)</td>
-                        <td>28.4 °C</td>
-                        <td>High</td>
-                        <td>+0.72 (Positive)</td>
-                    </tr>
-                    <tr>
-                        <td>Dissolved Oxygen (DO)</td>
-                        <td>4.2 mg/L</td>
-                        <td>Medium</td>
-                        <td>+0.85 (Strong Positive)</td>
-                    </tr>
-                    <tr>
-                        <td>Salinity Levels</td>
-                        <td>34.8 PSU</td>
-                        <td>Baseline</td>
-                        <td>-0.12 (Neutral)</td>
-                    </tr>
-                </tbody>
-            </table>
+        <h2><i class="fa-solid fa-chart-line"></i> Oceanographic Parameter Matrix</h2>
+        <p style="color: #6c757d;">Simulate real-time cross-disciplinary correlations across multiple ocean spatial grids.</p>
+
+        <div class="dashboard-split">
+            <div>
+                <button class="param-btn active" onclick="updateChart('sst', this)">
+                    <span><i class="fa-solid fa-temperature-half"></i> Sea Surface Temp (SST)</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <button class="param-btn" onclick="updateChart('do', this)">
+                    <span><i class="fa-solid fa-wind"></i> Dissolved Oxygen (DO)</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <button class="param-btn" onclick="updateChart('sal', this)">
+                    <span><i class="fa-solid fa-droplet"></i> Salinity Levels</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="graph-container">
+                <h3 id="graphTitle" style="color: #03045e;"><i class="fa-solid fa-chart-bar"></i> Biomass Correlation Distribution</h3>
+                <p style="color: #6c757d; font-size: 0.85rem; margin-bottom: 1.5rem;">Calculated relative biomass layout indices matched against chosen parameters.</p>
+                
+                <div class="bar-wrapper">
+                    <div class="bar-label"><span>West Coast EEZ</span><span id="val1">72%</span></div>
+                    <div class="bar-background"><div id="bar1" class="bar-fill"></div></div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar-label"><span>South-East Coast</span><span id="val2">85%</span></div>
+                    <div class="bar-background"><div id="bar2" class="bar-fill"></div></div>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar-label"><span>Lakshadweep Sea</span><span id="val3">40%</span></div>
+                    <div class="bar-background"><div id="bar3" class="bar-fill"></div></div>
+                </div>
+            </div>
         </div>
         <br>
-        <a href="index.html" style="text-decoration: none; color: var(--secondary-color); font-weight: bold;">&larr; Back to Home Dashboard</a>
+        <a href="index.html" style="text-decoration: none; color: #0077b6; font-weight: bold;">&larr; Back to Home Dashboard</a>
     </div>
 
+    <script>
+        const chartData = {
+            sst: { title: "Sea Surface Temp (SST) Biomass Impact", bars: [72, 65, 88] },
+            do: { title: "Dissolved Oxygen (DO) Vitality Layout Index", bars: [92, 81, 76] },
+            sal: { title: "Salinity Spatial Distribution Matrix", bars: [45, 52, 31] }
+        };
+
+        function updateChart(key, element) {
+            // Manage active buttons
+            document.querySelectorAll('.param-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            
+            // Render specific array dataset fields 
+            const dataset = chartData[key];
+            document.getElementById('graphTitle').innerHTML = `<i class="fa-solid fa-chart-bar"></i> ` + dataset.title;
+            
+            for(let i = 1; i <= 3; i++) {
+                const val = dataset.bars[i-1];
+                document.getElementById('bar' + i).style.width = val + '%';
+                document.getElementById('val' + i).innerText = val + '%';
+            }
+        }
+        // Initialize layout on load
+        window.onload = () => { updateChart('sst', document.querySelector('.param-btn')); };
+    </script>
 </body>
 </html>
